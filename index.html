@@ -1,27 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-    <title>My Genially Tool</title>
+    <meta charset="UTF-8">
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #1E3A5F;
-            color: #FFD700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        h1 { font-size: 32px; }
-        p { font-size: 18px; color: #FFF; }
+        body { font-family: Tahoma, sans-serif; background: #1E3A5F; color: #FFD700; text-align: center; padding: 20px; }
+        .stats { display: flex; justify-content: center; gap: 50px; margin-bottom: 20px; }
+        .stat-box { background: rgba(255, 215, 0, 0.1); border: 2px solid #FFD700; border-radius: 10px; padding: 20px; }
+        .stat-value { font-size: 48px; margin: 0; }
+        .stat-label { font-size: 18px; color: #FFF; }
+        button { background: #FFD700; color: #1E3A5F; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: bold; }
+        button:hover { background: #FFF; }
+        .reset { background: #E63946; color: #FFF; }
     </style>
 </head>
 <body>
-    <div>
-        <h1>🎉 کارآگاه دیجیتال</h1>
-        <p>این یک تست است. اگر این متن را می‌بینی، یعنی GitHub Pages کار می‌کند!</p>
+    <h1>سیستم امتیازدهی کارآگاه دیجیتال</h1>
+    <div class="stats">
+        <div class="stat-box">
+            <p class="stat-value" id="coins">0</p>
+            <p class="stat-label">سکه 🪙</p>
+        </div>
+        <div class="stat-box">
+            <p class="stat-value" id="lives">3</p>
+            <p class="stat-label">جان ❤️</p>
+        </div>
     </div>
+    <button onclick="addCoin()">+100 سکه</button>
+    <button onclick="loseLife()">-1 جان</button>
+    <button class="reset" onclick="resetGame()">شروع مجدد</button>
+
+    <script>
+        let coins = 0;
+        let lives = 3;
+
+        function updateDisplay() {
+            document.getElementById('coins').innerText = coins;
+            document.getElementById('lives').innerText = lives;
+        }
+
+        function addCoin() {
+            coins += 100;
+            updateDisplay();
+        }
+
+        function loseLife() {
+            if (lives > 0) {
+                lives -= 1;
+                updateDisplay();
+            }
+        }
+
+        function resetGame() {
+            coins = 0;
+            lives = 3;
+            updateDisplay();
+        }
+    </script>
 </body>
 </html>
